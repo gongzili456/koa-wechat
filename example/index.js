@@ -3,7 +3,7 @@
  */
 var koa = require('koa');
 var logger = require('koa-logger')();
-var Wechat = require('./lib/wechat');
+var Wechat = require('../lib/wechat');
 
 var app = koa();
 
@@ -39,7 +39,61 @@ app.use(wechat.wechats());
 function* handler(msg) {
   console.log('received msg: ', msg);
 
-  return yield this.reply('Hi.');
+  var res = '';
+
+  switch (msg.Content){
+    case 'text':
+      res = 'Hi';
+      break;
+
+    case 'image':
+      res = {
+        type: 'image',
+        MediaId: 'HsaaCMBGpwqpZW6vOSGsE6DFdBiLsQ-BE8Jkw7-ujLpm7PqAtFTK9lJck8eMTL5R'
+      }
+      break;
+
+    case 'voice':
+      res = {
+        type: 'voice',
+        MediaId: 'uEKLi-ll-jqe54ojkgJu54TBmi64wfAX5TdopVzStNEeGWQe0TOxijiQWe7iYZ1J'
+      }
+      break;
+
+    case 'video':
+      res = {
+        type: 'video',
+        MediaId: 'vMcPRgclyCTJ8TYz5NnTwsaSYgcwmAHFqPShGnOXMSyQqV6bEZmcdWbxZ5fxJYQF',
+        Title: 'video title',
+        Description: 'video desc'
+      }
+      break;
+
+    case 'music':
+      res = {
+        type: 'music',
+        MediaId: ''
+      }
+      break;
+
+    case 'news':
+      res = [
+        {
+          Title: 'title 1',
+          Description: 'desc 1',
+          PicUrl: 'http://bizhi.zhuoku.com/2011/02/25/music/Music07.jpg',
+          Url: 'http://baidu.com'
+        },
+        {
+          Title: 'title 2',
+          Description: 'desc 2',
+          PicUrl: 'http://img0.pconline.com.cn/pconline/1305/20/3304470_1.jpg',
+          Url: 'http://sina.com'
+        }
+      ]
+  }
+
+  return yield this.reply(res);
 }
 
 app.listen(9300);
