@@ -2,7 +2,11 @@
  * Created by liuguili on 7/13/15.
  */
 var koa = require('koa');
+var logger = require('koa-logger')();
 
+var app = koa();
+
+app.use(logger);
 
 app.use(function*(next) {
   try {
@@ -22,13 +26,21 @@ app.on('err', function(err) {
 });
 
 
-var wechat = require('./lib/wechat');
+var Wechat = require('./lib/wechat');
 
-app.use(wechat('/wechat', {
+var config = {
   token: '7a5b589093714d1fa578ac37fea5f8d4',
   EncodingAESKey: '4hSnErkESRA5LT6klTlj196vvb33jl9QvKZJyHDV3Z7'
-}, function(msg) {
+}
+
+var wechat = new Wechat('/wechat', config, handler);
+
+app.use(wechat.wechats());
+
+function* handler(msg) {
   console.log('received msg: ', msg);
 
   return yield this.reply('Hi.');
-}));
+}
+
+app.listen(8000);
