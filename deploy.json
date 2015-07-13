@@ -1,8 +1,8 @@
 {
   "server": ["ec2-user@54.223.192.91"],
   "port": 22,
-  "server_dir": "/srv/api_staging",
-  "repo": "git@github.com:topdmc/cw-api.git",
+  "server_dir": "/srv/koa",
+  "repo": "git@github.com:gongzili456/koa-wechat.git",
   "branch": "master",
   "force_regenerate_git_dir": false,
   "shared_dirs": [
@@ -10,7 +10,7 @@
   ],
   "prerun": [
     "npm install",
-    "pm2 delete wechat_staging || true"
+    "pm2 delete koa || true"
   ],
   "run_cmd": "npm run start-staging"
 }

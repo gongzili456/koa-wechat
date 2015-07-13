@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start-staging": "APP_ROOT_PATH=/srv/wechat_staging/current NODE_ENV=staging PORT=9300 WS_PORT=80  FORCE_AUTH=true pm2 start index.js --node-args='--harmony_arrow_functions' --name wechat_staging"
+    "start-staging": "APP_ROOT_PATH=/srv/koa/current NODE_ENV=staging PORT=9300 WS_PORT=80  FORCE_AUTH=true pm2 start index.js --node-args='--harmony_arrow_functions' --name koa"
   },
   "author": "",
   "license": "ISC",
@@ -19,6 +19,7 @@
     "koa": "^0.21.0",
     "koa-logger": "^1.2.2",
     "path-to-regexp": "^1.2.0",
+    "q": "^1.4.1",
     "xml2js": "^0.4.9"
   }
 }
