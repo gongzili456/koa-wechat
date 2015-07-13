@@ -48,21 +48,21 @@ function* handler(msg) {
 
     case 'image':
       res = {
-        type: 'image',
+        MsgType: 'image',
         MediaId: 'HsaaCMBGpwqpZW6vOSGsE6DFdBiLsQ-BE8Jkw7-ujLpm7PqAtFTK9lJck8eMTL5R'
       }
       break;
 
     case 'voice':
       res = {
-        type: 'voice',
+        MsgType: 'voice',
         MediaId: 'uEKLi-ll-jqe54ojkgJu54TBmi64wfAX5TdopVzStNEeGWQe0TOxijiQWe7iYZ1J'
       }
       break;
 
     case 'video':
       res = {
-        type: 'video',
+        MsgType: 'video',
         MediaId: 'vMcPRgclyCTJ8TYz5NnTwsaSYgcwmAHFqPShGnOXMSyQqV6bEZmcdWbxZ5fxJYQF',
         Title: 'video title',
         Description: 'video desc'
@@ -71,7 +71,7 @@ function* handler(msg) {
 
     case 'music':
       res = {
-        type: 'music',
+        MsgType: 'music',
         MediaId: ''
       }
       break;
