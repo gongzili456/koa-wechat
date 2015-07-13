@@ -3,6 +3,7 @@
  */
 var koa = require('koa');
 var logger = require('koa-logger')();
+var Wechat = require('./lib/wechat');
 
 var app = koa();
 
@@ -26,8 +27,6 @@ app.on('err', function(err) {
 });
 
 
-var Wechat = require('./lib/wechat');
-
 var config = {
   token: '7a5b589093714d1fa578ac37fea5f8d4',
   EncodingAESKey: '4hSnErkESRA5LT6klTlj196vvb33jl9QvKZJyHDV3Z7'
@@ -43,4 +42,4 @@ function* handler(msg) {
   return yield this.reply('Hi.');
 }
 
-app.listen(8000);
+app.listen(9300);
