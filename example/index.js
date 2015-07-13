@@ -28,8 +28,8 @@ app.on('err', function(err) {
 
 
 var config = {
-  token: '7a5b589093714d1fa578ac37fea5f8d4',
-  EncodingAESKey: '4hSnErkESRA5LT6klTlj196vvb33jl9QvKZJyHDV3Z7'
+  token: 'token',
+  EncodingAESKey: 'key'
 }
 
 var wechat = new Wechat('/wechat', config, handler);
