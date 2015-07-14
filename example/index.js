@@ -3,7 +3,7 @@
  */
 var koa = require('koa');
 var logger = require('koa-logger')();
-var Wechat = require('../lib/wechat');
+var wechat = require('../lib/wechat');
 
 var app = koa();
 
@@ -32,9 +32,7 @@ var config = {
   EncodingAESKey: 'key'
 }
 
-var wechat = new Wechat('/wechat', config, handler);
-
-app.use(wechat.wechats());
+app.use(wechat('/wechat', config, handler).wechats());
 
 function* handler(msg) {
   console.log('received msg: ', msg);
