@@ -30,7 +30,7 @@ app.on('err', function(err) {
 var config = {
   token: 'token',
   EncodingAESKey: 'key'
-}
+};
 
 app.use(wechat('/wechat', config, handler).wechats());
 
